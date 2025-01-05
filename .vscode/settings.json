@@ -1,0 +1,8 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "eslint.validate": ["typescript"],
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "jest.jestCommandLine": "yarn test --silent=false"
+}
