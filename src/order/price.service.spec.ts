@@ -92,6 +92,17 @@ describe('PriceService', () => {
       ],
       expectedPrice: 36,
     },
+    {
+      scenario: 'Example scenario',
+      items: [
+        { book: { price: 8 }, quantity: 2 },
+        { book: { price: 8 }, quantity: 2 },
+        { book: { price: 8 }, quantity: 2 },
+        { book: { price: 8 }, quantity: 1 },
+        { book: { price: 8 }, quantity: 1 },
+      ],
+      expectedPrice: 51.2,
+    },
   ])(
     `should calculate total price correctly for scenario: $scenario`,
     ({ items, expectedPrice }) => {
