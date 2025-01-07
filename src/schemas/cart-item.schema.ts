@@ -1,11 +1,11 @@
 import { z } from 'zod';
 import { bookSchema } from './book.schema';
 
-export const orderItemSchema = z
+export const cartItemSchema = z
   .object({
     book: bookSchema,
     quantity: z.number(),
   })
   .required();
 
-export interface OrderItem extends z.infer<typeof orderItemSchema> {}
+export interface CartItem extends z.infer<typeof cartItemSchema> {}

@@ -4,4 +4,4 @@ import { PriceService } from './price.service';
 @Module({
   providers: [PriceService],
 })
-export class OrderModule {}
+export class CartModule {}
