@@ -13,28 +13,64 @@ describe('PriceService', () => {
   });
 
   it.each([
-    { scenario: 'One volume', cart: [1], expectedPrice: 8 },
-    { scenario: 'Two volumes, one book', cart: [1, 1], expectedPrice: 15.2 },
+    {
+      scenario: 'One volume',
+      items: [{ book: { name: 'Volume 1' }, quantity: 1 }],
+      expectedPrice: 8,
+    },
+    {
+      scenario: 'Two volumes, one book',
+      items: [
+        { book: { name: 'Volume 1' }, quantity: 1 },
+        { book: { name: 'Volume 2' }, quantity: 1 },
+      ],
+      expectedPrice: 15.2,
+    },
     {
       scenario: 'Two volumes, multiple book',
-      cart: [1, 2],
+      items: [
+        { book: { name: 'Volume 2' }, quantity: 2 },
+        { book: { name: 'Volume 1' }, quantity: 1 },
+      ],
       expectedPrice: 23.2,
     },
     {
       scenario: 'Five volumes, one book',
-      cart: [1, 1, 1, 1, 1],
+      items: [
+        { book: { name: 'Volume 1' }, quantity: 1 },
+        { book: { name: 'Volume 2' }, quantity: 1 },
+        { book: { name: 'Volume 3' }, quantity: 1 },
+        { book: { name: 'Volume 4' }, quantity: 1 },
+        { book: { name: 'Volume 5' }, quantity: 1 },
+      ],
       expectedPrice: 30,
     },
     {
       scenario: 'Five volumes, Volume 1 twice',
-      cart: [2, 1, 1, 1, 1],
+      items: [
+        { book: { name: 'Volume 1' }, quantity: 2 },
+        { book: { name: 'Volume 2' }, quantity: 1 },
+        { book: { name: 'Volume 3' }, quantity: 1 },
+        { book: { name: 'Volume 4' }, quantity: 1 },
+        { book: { name: 'Volume 5' }, quantity: 1 },
+      ],
       expectedPrice: 38,
     },
-    { scenario: 'Task Example', cart: [2, 2, 2, 1, 1], expectedPrice: 51.2 },
+    {
+      scenario: 'Task Example',
+      items: [
+        { book: { name: 'Volume 1' }, quantity: 2 },
+        { book: { name: 'Volume 2' }, quantity: 2 },
+        { book: { name: 'Volume 3' }, quantity: 2 },
+        { book: { name: 'Volume 4' }, quantity: 1 },
+        { book: { name: 'Volume 5' }, quantity: 1 },
+      ],
+      expectedPrice: 51.2,
+    },
   ])(
     `Should return $expectedPrice EUR for scenario: $scenario`,
-    ({ cart, expectedPrice }) => {
-      expect(service.calculateCheapestOffer(cart)).toBe(expectedPrice);
+    ({ items, expectedPrice }) => {
+      expect(service.calculateCheapestOffer(items)).toBe(expectedPrice);
     },
   );
 });
