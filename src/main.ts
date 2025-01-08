@@ -20,7 +20,7 @@ async function bootstrap() {
 
   const configService = app.get<ConfigService, TConfigService>(ConfigService);
 
-  const port = configService.get('PORT', { infer: true });
+  const port = configService.get('APP_PORT', { infer: true });
   const host = configService.get('HOST', { infer: true });
   const corsOrigin = configService.get('CORS_ORIGIN', { infer: true });
 
