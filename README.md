@@ -5,8 +5,11 @@ This is a Harry Potter bookshop application built with [NestJS](https://nestjs.c
 # Installation
 You can install the application using Node.js or Docker. Since it is just a Node.js I recommend using simple Node.js installation with nvm.
 
-*Prerequisits:*
 Copy the `.env.example` file to `.env` in the root directory of the project:
+
+```sh
+cp .env.example .env
+```
 
 ## Node.js Installation
 1. Ensure you have Node.js installed on your machine ([nvm](https://github.com/nvm-sh/nvm) recommended).
@@ -70,6 +73,13 @@ curl --request GET \
 ```
 
 It should return products specified in challenge task and return cheapest price for the cart.
+
+### Run Tests
+You can run tests with the following command:
+
+```sh
+yarn test
+```
 
 # Conclusion
 I hope you find this application easy to understand. If you have any questions or suggestions, I would be happy to hear them or explain the coding process in more detail.
