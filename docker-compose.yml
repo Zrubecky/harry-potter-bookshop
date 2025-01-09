@@ -1,13 +1,14 @@
 services:
   app:
-    build: .
+    build: 
+      dockerfile: Dockerfile
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - '3000:3000'
-    environment:
-      - NODE_ENV=production
-      - APP_PORT=${APP_PORT}
-      - HOST=${HOST}
-      - CORS_ORIGIN=${CORS_ORIGIN}
-    volumes:
-      - .:/app
-    command: yarn start:prod
+    env_file:
+      - .env
+    command: yarn start:dev
